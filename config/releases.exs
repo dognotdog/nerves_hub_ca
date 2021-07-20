@@ -1,8 +1,9 @@
 import Config
 
 working_dir = "/etc/ssl"
+working_dir = System.get_env("NERVES_HUB_CA_DIR") || working_dir
 
-host = System.fetch_env!("HOST")
+host = System.fetch_env!("HOST") || "nerves-hub.org"
 
 config :nerves_hub_ca, :api,
   otp_app: :nerves_hub_ca,
